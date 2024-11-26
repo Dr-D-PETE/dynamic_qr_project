@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Profile</title>
+</head>
+<body>
+    <h1>{{ user[1] }}'s Profile</h1>
+    <p><strong>Phone:</strong> {{ user[2] }}</p>
+    <p><strong>Email:</strong> {{ user[3] }}</p>
+    <p><strong>Website:</strong> <a href="{{ user[4] }}" target="_blank">{{ user[4] }}</a></p>
+    <p><strong>Company:</strong> {{ user[5] }}</p>
+    <p><strong>Title:</strong> {{ user[6] }}</p>
+    <p><strong>Address:</strong> {{ user[7] }}</p>
+</body>
+</html>
+<img src="/generate_qr?id={{ user[0] }}" alt="QR Code">
