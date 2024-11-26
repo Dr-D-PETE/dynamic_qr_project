@@ -1,40 +1,20 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ user[1] }}'s Profile</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin: 0 auto;
-        }
-        .qr-code {
-            margin: 20px auto;
-        }
-        .profile-info {
-            display: inline-block;
-            text-align: left;
-        }
-        a {
-            text-decoration: none;
-        }
-    </style>
 </head>
 <body>
     <h1>{{ user[1] }}'s Profile</h1>
-    <div class="profile-info">
-        <p><strong>Phone:</strong> {{ user[2] }}</p>
-        <p><strong>Email:</strong> <a href="mailto:{{ user[3] }}">{{ user[3] }}</a></p>
-        <p><strong>Website:</strong> <a href="{{ user[4] }}" target="_blank">{{ user[4] }}</a></p>
-        <p><strong>LinkedIn:</strong> <a href="{{ user[8] }}" target="_blank">LinkedIn Profile</a></p>
-        <p><strong>Twitter:</strong> <a href="{{ user[9] }}" target="_blank">Twitter Profile</a></p>
-        <p><strong>Company:</strong> {{ user[5] }}</p>
-        <p><strong>Title:</strong> {{ user[6] }}</p>
-        <p><strong>Address:</strong> {{ user[7] }}</p>
-    </div>
-    <div class="qr-code">
-        <img src="/generate_qr?id={{ user[0] }}" alt="QR Code">
-    </div>
-    <a href="/download_vcard?id={{ user[0] }}">Download vCard</a>
+    <p><strong>Phone:</strong> {{ user[2] }}</p>
+    <p><strong>Email:</strong> {{ user[3] }}</p>
+    <p><strong>Website:</strong> <a href="{{ user[4] }}">{{ user[4] }}</a></p>
+    <p><strong>Company:</strong> {{ user[5] }}</p>
+    <p><strong>Title:</strong> {{ user[6] }}</p>
+    <p><strong>Address:</strong> {{ user[7] }}</p>
+    <p>
+        <a href="/generate_vcard?id={{ user[0] }}" class="btn btn-primary">Download vCard</a>
+    </p>
 </body>
 </html>
