@@ -2,6 +2,7 @@ from flask import Flask, request, render_template, jsonify, send_file
 import sqlite3
 import qrcode
 import io
+import os
 
 app = Flask(__name__)
 
@@ -99,4 +100,5 @@ def generate_qr():
 
 if __name__ == "__main__":
     init_db()
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 5000))  # Use the PORT environment variable provided by Render
+    app.run(host="0.0.0.0", port=port, debug=True)  # Bind to 0.0.0.0 and the correct port

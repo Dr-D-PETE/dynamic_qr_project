@@ -1,2 +1,4 @@
-Flask
-qrcode
+Flask==2.2.5
+qrcode==7.4.2
+sqlite3
+gunicorn==21.2.0
