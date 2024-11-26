@@ -1,68 +1,40 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ user[1] }}'s Profile</title>
     <style>
         body {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
             font-family: Arial, sans-serif;
-        }
-        .profile {
             text-align: center;
-            margin-top: 20px;
-        }
-        .links a {
-            margin: 0 10px;
-            text-decoration: none;
-            color: blue;
-        }
-        .links a:hover {
-            text-decoration: underline;
+            margin: 0 auto;
         }
         .qr-code {
-            margin-top: 20px;
+            margin: 20px auto;
         }
-        button {
-            margin-top: 20px;
-            padding: 10px 20px;
-            background-color: #0073e6;
-            color: white;
-            border: none;
-            cursor: pointer;
+        .profile-info {
+            display: inline-block;
+            text-align: left;
         }
-        button:hover {
-            background-color: #005bb5;
+        a {
+            text-decoration: none;
         }
     </style>
 </head>
 <body>
-    <div class="profile">
-        <h1>{{ user[1] }}'s Profile</h1>
+    <h1>{{ user[1] }}'s Profile</h1>
+    <div class="profile-info">
         <p><strong>Phone:</strong> {{ user[2] }}</p>
-        <p><strong>Email:</strong> {{ user[3] }}</p>
+        <p><strong>Email:</strong> <a href="mailto:{{ user[3] }}">{{ user[3] }}</a></p>
         <p><strong>Website:</strong> <a href="{{ user[4] }}" target="_blank">{{ user[4] }}</a></p>
+        <p><strong>LinkedIn:</strong> <a href="{{ user[8] }}" target="_blank">LinkedIn Profile</a></p>
+        <p><strong>Twitter:</strong> <a href="{{ user[9] }}" target="_blank">Twitter Profile</a></p>
         <p><strong>Company:</strong> {{ user[5] }}</p>
         <p><strong>Title:</strong> {{ user[6] }}</p>
         <p><strong>Address:</strong> {{ user[7] }}</p>
-
-        <!-- Social Links -->
-        <div class="links">
-            <a href="https://linkedin.com/in/yourusername" target="_blank">LinkedIn</a>
-            <a href="https://twitter.com/yourusername" target="_blank">X (Twitter)</a>
-        </div>
-
-        <!-- QR Code -->
-        <div class="qr-code">
-            <img src="/generate_qr?id={{ user[0] }}" alt="QR Code">
-        </div>
-
-        <!-- Download vCard -->
-        <button onclick="window.location.href='/download_vcard?id={{ user[0] }}'">Download vCard</button>
     </div>
+    <div class="qr-code">
+        <img src="/generate_qr?id={{ user[0] }}" alt="QR Code">
+    </div>
+    <a href="/download_vcard?id={{ user[0] }}">Download vCard</a>
 </body>
 </html>

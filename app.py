@@ -104,3 +104,36 @@ if __name__ == "__main__":
     app.run(host="0.0.0.0", port=port, debug=True)  # Bind to 0.0.0.0 and the correct port
 
 
+@app.route("/download_vcard", methods=["GET"])
+def download_vcard():
+    user_id = request.args.get("id")  # Get the user ID from query parameters
+    if not user_id:
+        return "User ID is required", 400
+
+    conn = sqlite3.connect("database.db")
+    cursor = conn.cursor()
+    cursor.execute("SELECT * FROM users WHERE id = ?", (user_id,))
+    user = cursor.fetchone()
+    conn.close()
+
+    if not user:
+        return "User not found", 404
+
+    # Create vCard content
+    vcard = f"""BEGIN:VCARD
+VERSION:3.0
+FN:{user[1]}
+TEL:{user[2]}
+EMAIL:{user[3]}
+URL:{user[4]}
+ORG:{user[5]}
+TITLE:{user[6]}
+ADR:{user[7]}
+END:VCARD"""
+
+    # Serve vCard as a downloadable file
+    return Response(
+        vcard,
+        mimetype="text/vcard",
+        headers={"Content-Disposition": f"attachment;filename={user[1]}.vcf"}
+    )
