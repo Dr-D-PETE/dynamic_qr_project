@@ -80,7 +80,7 @@ def generate_qr():
         return "User not found", 404
 
     # Generate the QR code with the profile link
-    profile_url = f"http://127.0.0.1:5000/profile?id={user_id}"
+    profile_url = f"https://dynamic-qr-app.onrender.com/profile?id={user_id}"
     qr = qrcode.QRCode(
         version=1,
         error_correction=qrcode.constants.ERROR_CORRECT_L,
@@ -102,3 +102,5 @@ if __name__ == "__main__":
     init_db()
     port = int(os.environ.get("PORT", 5000))  # Use the PORT environment variable provided by Render
     app.run(host="0.0.0.0", port=port, debug=True)  # Bind to 0.0.0.0 and the correct port
+
+
